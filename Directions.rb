@@ -1,8 +1,8 @@
 module Irrgarten
   module Directions
-    LEFT = "LEFT"
-    RIGHT = "RIGHT"
-    UP = "UP"
-    DOWN = "DOWN"
+    LEFT = :left
+    RIGHT = :right
+    UP = :up
+    DOWN = :down
   end
 end

@@ -1,6 +1,6 @@
 module Irrgarten
   module GameCharacter
-    PLAYER = "PLAYER"
-    MONSTER = "MONSTER"
+    PLAYER = :player
+    MONSTER = :monster
   end
 end
