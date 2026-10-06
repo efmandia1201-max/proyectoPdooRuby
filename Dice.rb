@@ -31,10 +31,39 @@ module Irrgarten
   end
 
   def self.resurrectPlayer
-    if(@@generator.rand < @@RESURRECT_PROB)
-      return true
-    else
-      return false
-    end
+    return (@@generator.rand < @@RESURRECT_PRO)
+  end
+
+  def self.weaponReward
+    @@generator.rand(@@WEAPON_REWARD + 1)
+  end
+
+  def self.shieldsReward
+    @@generator.rand(@@MAX_SHIELD + 1)
+  end
+
+  def self.healthReward
+    @@generator.rand(@@HEALTH_REWARD + 1)
+  end
+
+  def self.weaponPower
+    @@generator.rand(@@MAX_ATTACK)
+  end
+
+  def self.shieldPower
+    @@generator.rand(@@MAX_SHIELD)
+  end
+
+  def self.useLeft
+    @@generator.rand(@@MAX_USES + 1)
+  end
+
+  def self.intensity(competence)
+    @@generator.rand(competence)
+  end
+
+  def self.discardElement(usesLeft)
+    probabily = (@@MAX_USES - usesLeft) / @@MAX_USES;
+    @@generator.rand < probabily
   end
 end

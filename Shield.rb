@@ -1,3 +1,5 @@
+require "Dice.rb"
+
 module Irrgarten
   class Shield
 
@@ -13,6 +15,10 @@ module Irrgarten
       end
 
       0
+    end
+
+    def discard
+      Dice::discardElement(@uses)
     end
 
     def to_s
