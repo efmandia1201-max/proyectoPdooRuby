@@ -1,4 +1,4 @@
-require "Dice.rb"
+require "dice.rb"
 
 module Irrgarten
   class Shield
@@ -22,7 +22,7 @@ module Irrgarten
     end
 
     def to_s
-      puts "S[#{@protection}, #{@uses}]"
+      "S[#{@protection}, #{@uses}]"
     end
   end
 end

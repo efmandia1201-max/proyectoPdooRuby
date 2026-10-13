@@ -1,4 +1,4 @@
-require "Dice.rb"
+require "dice.rb"
 
 module Irrgarten
   class Weapon
@@ -22,7 +22,7 @@ module Irrgarten
     end
 
     def to_s
-      puts "W[#{@power}, #{@uses}]"
+      "W[#{@power}, #{@uses}]"
     end
   end
 end

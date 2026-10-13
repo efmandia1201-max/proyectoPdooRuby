@@ -1,6 +1,6 @@
 module Irrgarten
-  module GameCharacter
-    PLAYER = :player
-    MONSTER = :monster
+  module Orientation
+    VERTICAL = :vertical
+    HORIZONTAL = :horizontal
   end
 end
