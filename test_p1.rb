@@ -1,7 +1,7 @@
 #encoding:utf-8
 
 require_relative "dice"
-require_relative "direction"
+require_relative "directions"
 require_relative "game_character"
 require_relative "game_state"
 require_relative "orientation"
@@ -118,7 +118,6 @@ module Irrgarten
     end
 
     def self.pruebaDice
-      # ---------- randomPos(4): enteros 0..3 ----------
       contador = 0
       fueraRango = false
       while contador < 100
@@ -130,7 +129,6 @@ module Irrgarten
       end
       puts "randomPos(4) fuera de rango 0..3: #{fueraRango} (esperado false)"
 
-      # ---------- whoStart(4): enteros 0..3 ----------
       contador = 0
       fueraRango = false
       while contador < 100
@@ -142,7 +140,6 @@ module Irrgarten
       end
       puts "whoStart(4) fuera de rango 0..3: #{fueraRango} (esperado false)"
 
-      # ---------- randomIntelligence: real en [0, 10) ----------
       contador = 0
       fueraRango = false
       suma = 0.0
@@ -156,7 +153,6 @@ module Irrgarten
       end
       puts "randomIntelligence fuera de rango [0,10): #{fueraRango} (esperado false), media #{suma / 100} (esperado ~5)"
 
-      # ---------- randomStrength: real en [0, 10) ----------
       contador = 0
       fueraRango = false
       suma = 0.0
@@ -170,7 +166,6 @@ module Irrgarten
       end
       puts "randomStrength fuera de rango [0,10): #{fueraRango} (esperado false), media #{suma / 100} (esperado ~5)"
 
-      # ---------- resurrectPlayer: true con probabilidad 0.3 ----------
       contador = 0
       resurrecciones = 0
       while contador < 100
@@ -181,7 +176,6 @@ module Irrgarten
       end
       puts "resurrectPlayer: #{resurrecciones} true de 100 (esperado ~30)"
 
-      # ---------- weaponReward: enteros 0..2 ----------
       contador = 0
       fueraRango = false
       while contador < 100
@@ -193,7 +187,6 @@ module Irrgarten
       end
       puts "weaponReward fuera de rango 0..2: #{fueraRango} (esperado false)"
 
-      # ---------- shieldsReward: enteros 0..3 ----------
       contador = 0
       fueraRango = false
       while contador < 100
@@ -205,7 +198,6 @@ module Irrgarten
       end
       puts "shieldsReward fuera de rango 0..3: #{fueraRango} (esperado false)"
 
-      # ---------- healthReward: enteros 0..3 ----------
       contador = 0
       fueraRango = false
       while contador < 100
@@ -217,31 +209,28 @@ module Irrgarten
       end
       puts "healthReward fuera de rango 0..5: #{fueraRango} (esperado false)"
 
-      # ---------- weaponPower: enteros 0..2 ----------
       contador = 0
       fueraRango = false
       while contador < 100
         valor = Dice.weapon_power
-        if valor < 0 || valor > 2
+        if valor < 0 || valor >= 3
           fueraRango = true
         end
         contador = contador + 1
       end
       puts "weaponPower fuera de rango 0..2: #{fueraRango} (esperado false)"
 
-      # ---------- shieldPower: enteros 0..2 ----------
       contador = 0
       fueraRango = false
       while contador < 100
         valor = Dice.shield_power
-        if valor < 0 || valor > 2
+        if valor < 0 || valor >= 2
           fueraRango = true
         end
         contador = contador + 1
       end
       puts "shieldPower fuera de rango 0..2: #{fueraRango} (esperado false)"
 
-      # ---------- useLeft: enteros 0..5 ----------
       contador = 0
       fueraRango = false
       while contador < 100
@@ -253,7 +242,6 @@ module Irrgarten
       end
       puts "useLeft fuera de rango 0..5: #{fueraRango} (esperado false)"
 
-      # ---------- intensity(7.5): real en [0, 7.5) ----------
       contador = 0
       fueraRango = false
       while contador < 100
@@ -265,7 +253,6 @@ module Irrgarten
       end
       puts "intensity(7.5) fuera de rango [0,7.5): #{fueraRango} (esperado false)"
 
-      # ---------- discardElement(usos): true con probabilidad (5 - usos) / 5 ----------
       usos = 0
       while usos <= 5
         contador = 0
