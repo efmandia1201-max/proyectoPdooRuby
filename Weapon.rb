@@ -1,4 +1,4 @@
-require "dice.rb"
+require_relative "dice.rb"
 
 module Irrgarten
   class Weapon
