@@ -1,69 +1,71 @@
-require 'random/formatter'
-
 module Irrgarten
   class Dice
     @@MAX_USES = 5
     @@MAX_INTELLIGENCE = 10.0
     @@MAX_STRENGTH = 10.0
     @@RESURRECT_PROB = 0.3
-    @@WEAPON_REWARD = 2
-    @@HEALTH_REWARD = 3
+    @@WEAPONS_REWARD = 2
+    @@SHIELDS_REWARD = 3
+    @@HEALTH_REWARD = 5
     @@MAX_ATTACK = 3
-    @@MAX_SHIELD = 3
+    @@MAX_SHIELD = 2
 
     @@generator = Random.new
   
-    def self.randomPos(max)
+    def self.random_pos(max)
       @@generator.rand(max)
     end
 
-    def self.whoStart(nplayer)
+    def self.who_starts(nplayer)
       @@generator.rand(nplayer)
     end
 
-    def self.randomIntelligence
+    def self.random_intelligence
       @@generator.rand(@@MAX_INTELLIGENCE)
     end
 
-    def self.randomStrength
+    def self.random_strength
       @@generator.rand(@@MAX_STRENGTH)
     end
 
-    def self.resurrectPlayer
-      return (@@generator.rand < @@RESURRECT_PRO)
+    def self.resurrect_player
+      return (@@generator.rand < @@RESURRECT_PROB)
     end
 
-    def self.weaponReward
-      @@generator.rand(@@WEAPON_REWARD + 1)
+    def self.weapons_reward
+      @@generator.rand(@@WEAPONS_REWARD + 1)
     end
 
-    def self.shieldsReward
-      @@generator.rand(@@MAX_SHIELD + 1)
+    def self.shields_reward
+      @@generator.rand(@@SHIELDS_REWARD + 1)
     end
 
-    def self.healthReward
+    def self.health_reward
       @@generator.rand(@@HEALTH_REWARD + 1)
     end
 
-    def self.weaponPower
-      @@generator.rand(@@MAX_ATTACK)
+    def self.weapon_power
+      @@generator.rand(@@MAX_ATTACK.to_f)
     end
 
-    def self.shieldPower
-      @@generator.rand(@@MAX_SHIELD)
+    def self.shield_power
+      @@generator.rand(@@MAX_SHIELD.to_f)
     end
 
-    def self.useLeft
+    def self.uses_left
       @@generator.rand(@@MAX_USES + 1)
     end
 
     def self.intensity(competence)
-      @@generator.rand(competence)
+      if(competence <= 0)
+        return 0.0
+      end
+      @@generator.rand(competence.to_f)
     end
 
-    def self.discardElement(usesLeft)
-      probabily = (@@MAX_USES - usesLeft) / @@MAX_USES.to_f;
-      @@generator.rand < probabily
+    def self.discard_element(usesLeft)
+      probability = (@@MAX_USES - usesLeft) / @@MAX_USES.to_f
+      @@generator.rand < probability
     end
   end
 end

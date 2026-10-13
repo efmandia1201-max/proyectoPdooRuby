@@ -4,21 +4,21 @@ module Irrgarten
   class Shield
 
     def initialize(protection, uses)
-      @protection = protection
+      @protection = protection.to_f
       @uses = uses
     end
 
     def protect
       if(@uses > 0)
         @uses -= 1
-        return @protection  
+        return @protection
       end
 
-      0
+      0.0
     end
 
     def discard
-      Dice::discardElement(@uses)
+      Dice.discard_element(@uses)
     end
 
     def to_s

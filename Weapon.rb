@@ -4,7 +4,7 @@ module Irrgarten
   class Weapon
 
     def initialize (power, uses)
-      @power = power
+      @power = power.to_f
       @uses = uses
     end
 
@@ -14,11 +14,11 @@ module Irrgarten
         return @power
       end
 
-      0
+      0.0
     end
 
     def discard
-      Dice::discardElement(@uses)
+      Dice.discard_element(@uses)
     end
 
     def to_s
